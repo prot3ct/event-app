@@ -6,6 +6,6 @@ const { server, app } = require("./config/application")({ data });
 
 server.listen(constants.port, () => console.log(`Superheroes running at :${config.port}`));
 
-let controllers = require("./controllers")({ data, io });
+// let controllers = require("./controllers")({ data, io });
 
-require("./routers")({ app, data, controllers });
+// require("./routers")({ app, data, controllers });
