@@ -31,9 +31,9 @@ module.exports = function({ data }) {
                 });
         },
         getAllEvents(req, res) {
-            data.getAllEvenets()
-                .then(result => {
-                    return res.render('../views/_mixins/_events-list', result);
+            data.getAllEvents()
+                .then(events => {
+                    return res.render('../views/home/home.pug', events);
                 });
         }
     };

@@ -4,14 +4,14 @@ const express = require("express");
 let Router = express.Router;
 
 module.exports = function({ app, controllers }) {
-    let controller = controllers.home;
+    let controller = controllers.users;
 
     let router = new Router();
 
     router
-        .get("", controller.home);
+        .get("/:username", controller.getUserByName);
 
-    app.use("/", router);
+    app.use("/users", router);
 
     return router;
 };

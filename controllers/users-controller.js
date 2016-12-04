@@ -8,8 +8,11 @@ module.exports = function({ data }) {
         getUserByName(req, res) {
             let username = req.params.username;
             data.getUserByName(username)
-                .then(user => {
-                    return res.render('../views/users/profile', user);
+                .then(users => {
+                    let user = users[0];
+                    return res.render('../views/users/profile', {
+                        result: user
+                    });
                 });
         }
     };
