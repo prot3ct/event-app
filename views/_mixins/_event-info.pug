@@ -1,0 +1,12 @@
+mixin event-info(event)
+    .col-md-4
+        .thumbnail
+            img(href="" + event.imageUrl)
+            .caption
+                h3
+                    = event.name
+                p
+                    = event.description
+                p
+                    a.btn.btn-primary
+                        | Check it out

@@ -1,17 +1,16 @@
 /* globals module require */
 
-const express = require('express');
+const express = require("express");
 let Router = express.Router;
 
 module.exports = function({ app, controllers }) {
-    let controller = controllers.superheroes;
-
+    let controller = controllers.search;
     let router = new Router();
 
     router
-        .get('/list', controller.getNewestSuperheroesAjax)
+        .get("/", controller.search);
 
-    app.use('/events', router);
+    app.use("/search", router);
 
     return router;
 };

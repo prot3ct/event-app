@@ -1,0 +1,11 @@
+extends ../_layout.pug
+
+block content
+    form(action="/events" method="post")
+        input.form-control(type="text" name="name" placeholder="Enter Name")
+        input.form-control(type="text" name="description" placeholder="Enter description")
+        input.form-control(type="text" name="imageUrl" placeholder="Image Url")
+        input.form-control(type="text" name="locationName" placeholder="Enter Location Name")
+
+        button.btn.btn-danger
+            | Submit

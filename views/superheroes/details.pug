@@ -1,0 +1,19 @@
+extends ../_layout
+
+include ../_mixins/_hero-info
+
+block content
+    .text-center
+        +hero-info(model)
+    ul.list.list-fractions
+        each fraction in model.fractions
+            li
+                a(href="/fractions/" + fraction.id)
+                    = fraction.name
+    ul.list.list-powers
+    each power in model.powers
+        li
+            a(href="/superheroes?powers=" + power.name)
+                = power.name
+    p
+        = model.story

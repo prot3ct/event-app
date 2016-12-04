@@ -1,0 +1,49 @@
+extends ../_layout
+
+block content
+    form(action="/superheroes" method="post")
+        input.form-control(type="text" name="name" placeholder="Enter Name")
+        input.form-control(type="text" name="secretIdentity" placeholder="Enter Secret Identity")
+       
+        input.form-control(type="text" name="city" placeholder="Enter City")
+        input.form-control(type="text" name="country" placeholder="Enter Country")
+        input.form-control(type="text" name="planet" placeholder="Enter Planet")
+        textarea.form-control(name="story" placeholder="Enter story")
+        
+        .row
+            .col-xs-12
+                | Powers:
+                ul.list.powers-list
+                    each power in model.powers
+                        li
+                            label
+                                = power.name
+                                input.form-control(type="checkbox" name="powers" value=power.name)
+        .row
+            .col-xs-12
+                a#btn-add-new-power-option(href="#")
+                    | Add new power
+        label
+            | Good
+            input.form-control(type="radio" name="alignment" placeholder="Enter Powers" value="Good")
+        label
+            | Evil
+            input.form-control(type="radio" name="alignment" placeholder="Enter Powers" value="Evil")
+        label
+            | Neutral
+            input.form-control(type="radio" name="alignment" placeholder="Enter Powers" value="Neutral")
+        
+        input.form-control(type="text" name="imageUrl" placeholder="Enter imageUrl")
+        
+        label
+            | Avengers
+            input.form-control(type="checkbox" name="fractions" value="Avengers")
+        label
+            | Justice League
+            input.form-control(type="checkbox" name="fractions" value="Justice League")
+        label
+            | Bat Family
+            input.form-control(type="checkbox" name="fractions" value="Bat Family")
+
+        button.btn.btn-danger
+            | Submit

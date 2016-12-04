@@ -1,0 +1,6 @@
+include _event-info
+
+mixin events-list(events)
+    .row.text-center
+        each event in events
+            +event-info(event)

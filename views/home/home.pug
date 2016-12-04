@@ -1,0 +1,15 @@
+extends ../_layout
+
+include ../_mixins/_events-list
+
+block content
+    div.jumbotron.text-center
+        h1 EventU
+        h3 Find your place in the universe.
+    hr
+    div
+        h1.text-center Newest events
+        +events-list(newestEvents)
+    div
+        h1.text-center Most popular
+        +events-list(mostPopularEvents)

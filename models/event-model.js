@@ -1,29 +1,24 @@
-/* globals require module */
+const modelRegistrator = require("./utils/model-registrator");
 
-const modelRegistrator = require('./utils/registrator');
-
-module.exports = modelRegistrator.register('Event', {
+module.exports = modelRegistrator.register("Event", {
     name: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
-    date: {
+    eventDate: {
         type: Date,
         required: true
     },
-    author: {
-        type: String,
-        required: true
+    imageUrl: {
+        type: String
     },
-    participants: [],
-    location: {
-        type: String,
-        required: true
-    }
+    location: {},
+    participants: [{}],
+    sponsors: [{}],
+    comments: [{}],
+    organiser: {}
 });
-
-// TO DO: Custom validator that checks if registered date is before current date

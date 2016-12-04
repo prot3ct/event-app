@@ -1,11 +1,12 @@
-const constants = require('./config/constants');
+// /* globals require console*/
+const config = require("./config");
 
-let data = require('./data/routers-loader')(constants.connectionString);
+let data = require("./data")(config.connectionString);
 
-const { server, app } = require('./config/application'); // ({ data })
+const { server, app } = require("./config/application")({ data });
 
-server.listen(constants.port, () => console.log(`Superheroes running at :${constants.port}`));
+server.listen(config.port, () => console.log(`Events system running on port: ${config.port}`));
 
-// let controllers = require('./controllers')({ data });
+let controllers = require("./controllers")({ data });
 
-require('./routers-loader')({ app, data, controllers });
+require("./routers")({ app, data, controllers });
