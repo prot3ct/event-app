@@ -6,7 +6,16 @@ module.exports = modelRegistrator.register("Location", {
         required: true,
         unique: true
     },
-    x: { type: Number },
-    y: { type: Number },
-    z: { type: Number }
+    xCoord: {
+        type: Number,
+        require: true
+    },
+    yCoord: {
+        type: Number,
+        require: true
+    },
+    zCoord: {
+        type: Number,
+        required: true
+    }
 });

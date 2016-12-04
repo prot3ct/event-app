@@ -1,4 +1,4 @@
-/* globals module */
+/* globals module console */
 
 const mapper = require("../utils/mapper");
 
@@ -10,7 +10,7 @@ module.exports = function({ data }) {
                 return res.redirect('/auth/sign-in');
             }
 
-            return res.render("events/create");
+            return res.render("../views/events/create");
         },
         createEvent(req, res) {
             let { name, description, imageUrl, locationName } = req.body;
@@ -28,6 +28,12 @@ module.exports = function({ data }) {
                     console.log(err);
                     res.status(400)
                         .send(err);
+                });
+        },
+        getAllEvents(req, res) {
+            data.getAllEvenets()
+                .then(result => {
+                    return res.render('../views/_mixins/_events-list', result);
                 });
         }
     };

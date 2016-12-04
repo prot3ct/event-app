@@ -9,10 +9,11 @@ module.exports = function({ app, controllers }) {
     let router = new Router();
 
     router
-        .get("/events", controller.getAddEvent)
-        .post("/events", controller.createEvent);
+        .get('/', controller.getAllEvents)
+        .get('/create', controller.getAddEvent)
+        .post('/create', controller.createEvent);
 
-    app.use("/", router);
+    app.use('/events', router);
 
     return router;
 };

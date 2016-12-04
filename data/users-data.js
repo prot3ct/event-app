@@ -17,6 +17,19 @@ module.exports = function(models) {
                     return resolve(user);
                 });
             });
+        },
+        getUserByName(name) {
+            return new Promise((resolve, reject) => {
+                User.find({ username: name })
+                    .limit(1)
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(user);
+                    });
+            });
         }
     };
 };

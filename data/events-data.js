@@ -16,7 +16,7 @@ module.exports = function(models) {
                 .then(dbLocation => {
                     location = dbLocation;
 
-                    newEvent = new Event({
+                    let newEvent = new Event({
                         name,
                         description,
                         eventDate,
@@ -29,7 +29,7 @@ module.exports = function(models) {
                     });
 
                     return dataUtils.save(newEvent);
-                })
+                });
         },
         getNewestEvents(count) {
             return new Promise((resolve, reject) => {
@@ -50,6 +50,18 @@ module.exports = function(models) {
                 Event.find({})
                     .sort({ 'participants.length': -1 })
                     .limit(count)
+                    .exec((err, events) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(events);
+                    });
+            });
+        },
+        getAllEvents() {
+            return new Promise((resolve, reject) => {
+                Event.find({})
                     .exec((err, events) => {
                         if (err) {
                             return reject(err);
