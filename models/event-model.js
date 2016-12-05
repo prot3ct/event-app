@@ -3,6 +3,7 @@ const modelRegistrator = require("./utils/model-registrator");
 module.exports = modelRegistrator.register("Event", {
     name: {
         type: String,
+        unique: true,
         required: true
     },
     description: {

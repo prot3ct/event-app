@@ -6,7 +6,8 @@ const dataUtils = require("./utils/data-utils"),
 module.exports = function(models) {
     let {
         Location,
-        Event
+        Event,
+        User
     } = models;
 
     return {
@@ -69,6 +70,51 @@ module.exports = function(models) {
 
                         return resolve(events);
                     });
+            });
+        },
+        getEventDetails(name) {
+            return new Promise((resolve, reject) => {
+                Event.find({ name })
+                    .exec((err, event) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(event[0]);
+                    });
+            });
+        },
+        getSearchedEvents(pattern){
+            return new Promise((resolve, reject) => {
+                Event.find({})
+                    .where(ev => {
+                        ev.name.indexOf(pattern) > 0
+                    })
+                    .exec((err, events) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(events);
+                    });
+            });
+        },
+        assignUserToEvent(userName, eventName) {
+            return new Promise((resolve, reject) => {
+                Event.findOne({ name: eventName }, (err, event) => {
+                    if(err){
+                        return reject(err);
+                    }
+                     
+                    return dataUtils.loadUser(User, userName)
+                        .then(user => {
+                            let userToPush = mapper.map(user, '_id', 'username');
+                            console.log(userToPush);
+                            event.participants.push(userToPush);
+                            dataUtils.save(event);
+                            return resolve(event);
+                        });
+                });
             });
         }
     };

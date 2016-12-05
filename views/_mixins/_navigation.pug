@@ -11,11 +11,9 @@ mixin site-navigation
             #navbar-collapse.collapse.navbar-collapse
                 ul.nav.navbar-nav
                     li
-                        a(href="/events/") List Events
+                        a(href="/events/create") Create Event
                     li
-                        a(href="/events/create") Create Events
-                    li
-                        a(href="/sponsors") Sponsors
+                        a(href="/events/") Events
                     if user
                         li.dropdown
                             a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
@@ -23,7 +21,7 @@ mixin site-navigation
                                 span.caret
                             ul.dropdown-menu
                                 li
-                                    a(href="/users/todo")
+                                    a(href="/users/" + user.username)
                                         | View profile
                                 li
                                     form(action="auth/sign-out" method="post")
@@ -41,8 +39,3 @@ mixin site-navigation
                                 li
                                     a(href="/auth/sign-in")
                                         | Sign in
-                    li
-                        form.form-inline(action="/search" method="get")
-                            input.form-control(type="text" name="pattern")
-                            button.btn.btn-danger
-                                span.glyphicon.glyphicon-search

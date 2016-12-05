@@ -9,8 +9,8 @@ module.exports = function({ app, controllers }) {
     let router = new Router();
 
     router
-        .get("", controller.home);
-
+        .get("/", controller.home);
+        
     app.use("/", router);
 
     return router;

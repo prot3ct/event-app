@@ -57,3 +57,18 @@ a.alignment.Neutral {
   background: none;
   color: #000;
 }
+#search-form{
+  text-align: center;
+  margin-bottom: 50px;
+}
+.profile-pic{
+  width: 300px;
+  height: 300px;
+}
+.allign-right{
+  position: relative;
+  left: 350px;
+}
+img{
+  display: inline;
+}

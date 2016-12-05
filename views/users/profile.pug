@@ -1,8 +1,20 @@
 extends ../_layout
 
 block content
-    div.jumbotron.text-center
-        h1 Hello to your profile
-        h3 
+    .info-container
+        h1 
+            =result.username
+            | 's profile:
+        h5 
             | Username: 
-            = result.username
+            =result.username
+        h2.allign-right 
+            | Description: 
+            =result.description
+        h5 
+            | Picture: 
+        img.profile-pic(src="../static/images/profile.png")
+    .events-container
+        | My events:
+
+

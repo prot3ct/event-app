@@ -11,7 +11,9 @@ module.exports = function({ app, controllers }) {
     router
         .get('/', controller.getAllEvents)
         .get('/create', controller.getAddEvent)
-        .post('/create', controller.createEvent);
+        .post('/create', controller.createEvent)
+        .post('/join', controller.assignUserToEvent)
+        .get("/:name", controller.getEventDetails);
 
     app.use('/events', router);
 

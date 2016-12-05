@@ -1,12 +1,14 @@
 mixin event-info(event)
-    .col-md-4
+    .col-md-4(style="background: url(imageurl)")
         .thumbnail
-            img(href="" + event.imageUrl)
+            img(src="" + event.imageUrl)
             .caption
                 h3
                     = event.name
                 p
                     = event.description
                 p
-                    a.btn.btn-primary
+                    a.btn.btn-primary(href="events/" + event.name) 
                         | Check it out
+                    if user 
+                        input.btn.btn-primary.btn-join(type="button", value="Join", data-event-name="" + event.name) 
