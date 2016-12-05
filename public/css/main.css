@@ -16,9 +16,6 @@
   display: inline-block;
   margin-left: 20px;
 }
-.list.list-newest-superheroes img {
-  width: 150px;
-}
 .hero-info-container {
   position: relative;
   display: inline-block;
@@ -43,9 +40,6 @@ a.alignment.evil {
 a.alignment.neutral,
 a.alignment.Neutral {
   color: #00f;
-}
-.superhero-avatar {
-  height: 550px;
 }
 .navbar-header,
 .collapse.navbar-collapse {
