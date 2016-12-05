@@ -1,3 +1,3 @@
 /* globals module require */
 
-module.exports = require("./controllers-loader");
+module.exports = require('./controllers-loader');

@@ -1,7 +1,7 @@
 /* globals module require */
 
-const passport = require("passport"),
-    LocalStrategy = require("passport-local").Strategy;
+const passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function({ app, data }) {
     app.use(passport.initialize());

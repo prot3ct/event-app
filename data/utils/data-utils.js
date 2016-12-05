@@ -20,7 +20,7 @@ module.exports = {
             });
         });
     },
-    loadUser(User, username){
+    loadUser(User, username) {
         return new Promise((resolve, reject) => {
             User.findOne({ username }, (err, dbUser) => {
                 let user = dbUser;

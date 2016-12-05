@@ -1,19 +1,18 @@
 /* globals module console */
 
-const mapper = require("../utils/mapper");
+const url = require('url');
 
 module.exports = function({ data }) {
     return {
-        name: "events",
+        name: 'events',
         getAddEvent(req, res) {
             if (!req.isAuthenticated()) {
                 return res.redirect('/auth/sign-in');
             }
 
-            return res.render("../views/events/create");
+            return res.render('../views/events/create');
         },
         createEvent(req, res) {
-            console.log(req.body);
             let { name, description, imageUrl, locationName } = req.body;
             return data.createEvent(
                     name,
@@ -22,7 +21,7 @@ module.exports = function({ data }) {
                     imageUrl,
                     locationName,
                     req.user)
-                .then(event => {
+                .then(() => {
                     return res.redirect('/');
                 })
                 .catch(err => {
@@ -50,10 +49,17 @@ module.exports = function({ data }) {
 
             data.assignUserToEvent(user, eventName)
                 .then(() => {
-                    console.log('redirecting');
                     return res.json(user);
                 }
             );
+        },
+        filterEvents(req, res) {
+            let query = url.parse(req.url, true).query;
+
+            data.filterEvents(query.pattern)
+                .then(events => {
+                    return res.render('../views/_layout.pug', { result: { events } });
+                });
         }
     };
 };

@@ -1,2 +1,2 @@
 /* globals module require */
-module.exports = require("./routers-loader");
+module.exports = require('./routers-loader');

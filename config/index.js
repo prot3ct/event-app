@@ -1,2 +1,2 @@
 /* globals module require */
-module.exports = require("./constants");
+module.exports = require('./constants');

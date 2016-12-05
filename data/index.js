@@ -1,3 +1,3 @@
 /* globals module require */
 
-module.exports = require("./data-loader");
+module.exports = require('./data-loader');

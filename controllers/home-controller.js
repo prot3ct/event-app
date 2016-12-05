@@ -1,18 +1,18 @@
 /* globals module */
 
-const mapper = require("../utils/mapper");
+const mapper = require('../utils/mapper');
 
 const MOST_POPULAR_EVENTS_COUNT = 3,
     NEWEST_EVENTS_COUNT = 3;
 
 module.exports = function({ data }) {
     return {
-        name: "home",
+        name: 'home',
         getNewestEventsAjax(req, res) {
             data.getNewestEvents(NEWEST_EVENTS_COUNT)
                 .then(events => {
                     res.send({
-                        result: events.map(event => mapper.map(event, "_id", "name", "description", "eventDate", "imageUrl"))
+                        result: events.map(event => mapper.map(event, '_id', 'name', 'description', 'eventDate', 'imageUrl'))
                     });
                 });
         },
@@ -20,7 +20,7 @@ module.exports = function({ data }) {
             data.getMostPopularEvents(MOST_POPULAR_EVENTS_COUNT)
                 .then(events => {
                     res.send({
-                        result: events.map(event => mapper.map(event, "_id", "name", "description", "eventDate", "imageUrl"))
+                        result: events.map(event => mapper.map(event, '_id', 'name', 'description', 'eventDate', 'imageUrl'))
                     });
                 });
         },
@@ -29,13 +29,13 @@ module.exports = function({ data }) {
                 .then(newestEvents => {
                     data.getMostPopularEvents(MOST_POPULAR_EVENTS_COUNT)
                         .then(mostPopularEvents => {
-                            return res.render("home/home", {
+                            return res.render('home/home', {
                                 user: req.user,
-                                newestEvents: newestEvents,
-                                mostPopularEvents: mostPopularEvents
+                                newestEvents,
+                                mostPopularEvents
                             });
-                        })
-                })
+                        });
+                });
         }
     };
 };

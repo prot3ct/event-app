@@ -50,7 +50,6 @@ a.alignment.Neutral {
 .navbar-header,
 .collapse.navbar-collapse {
   display: inline-block !important;
-  float: none;
 }
 .btn-sign-out {
   border: none;

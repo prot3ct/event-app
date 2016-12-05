@@ -1,10 +1,8 @@
 /* globals module console */
 
-const mapper = require("../utils/mapper");
-
 module.exports = function({ data }) {
     return {
-        name: "users",
+        name: 'users',
         getUserByName(req, res) {
             let username = req.params.username;
             data.getUserByName(username)

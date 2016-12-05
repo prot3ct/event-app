@@ -1,9 +1,31 @@
 extends ../_layout.pug
 
 block content
-    h1
-        | Name: 
-        = name
-    h2
-        | Picture: 
-        = imageUrl
+    .info-container
+        h1 
+            =name
+        h5 
+            | Organiser: 
+            =organiser.username
+        h5 
+            | Location: 
+            | x: 
+            =location.xCoord
+            | y: 
+            =location.yCoord
+        h5 
+            | Date: 
+            =eventDate
+        h2.allign-right 
+            | Description: 
+            =description
+        h5 
+            | Picture: 
+        img.profile-pic(src="" + imageUrl)
+
+        h3
+            | Participants:
+        ul
+            each participant in participants
+                li
+                    =participant.username

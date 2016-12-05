@@ -1,7 +1,7 @@
 /* globals module require Promise */
 
-const dataUtils = require("./utils/data-utils"),
-    mapper = require("../utils/mapper");
+const dataUtils = require('./utils/data-utils'),
+    mapper = require('../utils/mapper');
 
 module.exports = function(models) {
     let {
@@ -22,11 +22,11 @@ module.exports = function(models) {
                         description,
                         eventDate,
                         imageUrl,
-                        location: mapper.map(location, "_id", "name"),
+                        location: mapper.map(location, '_id', 'name'),
                         participants: [],
                         sponsors: [],
                         comments: [],
-                        organiser: mapper.map(organiser, "_id", "username")
+                        organiser: mapper.map(organiser, '_id', 'username')
                     });
 
                     return dataUtils.save(newEvent);
@@ -84,11 +84,11 @@ module.exports = function(models) {
                     });
             });
         },
-        getSearchedEvents(pattern){
+        filterEvents(pattern) {
             return new Promise((resolve, reject) => {
                 Event.find({})
                     .where(ev => {
-                        ev.name.indexOf(pattern) > 0
+                        ev.name.indexOf(pattern) > 0;
                     })
                     .exec((err, events) => {
                         if (err) {
@@ -102,14 +102,13 @@ module.exports = function(models) {
         assignUserToEvent(userName, eventName) {
             return new Promise((resolve, reject) => {
                 Event.findOne({ name: eventName }, (err, event) => {
-                    if(err){
+                    if (err) {
                         return reject(err);
                     }
-                     
+
                     return dataUtils.loadUser(User, userName)
                         .then(user => {
                             let userToPush = mapper.map(user, '_id', 'username');
-                            console.log(userToPush);
                             event.participants.push(userToPush);
                             dataUtils.save(event);
                             return resolve(event);

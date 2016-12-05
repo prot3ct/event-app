@@ -1,6 +1,6 @@
 /* globals require module*/
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 let Schema = mongoose.Schema;
 

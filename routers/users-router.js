@@ -1,6 +1,6 @@
 /* globals module require */
 
-const express = require("express");
+const express = require('express');
 let Router = express.Router;
 
 module.exports = function({ app, controllers }) {
@@ -9,9 +9,9 @@ module.exports = function({ app, controllers }) {
     let router = new Router();
 
     router
-        .get("/:username", controller.getUserByName);
+        .get('/:username', controller.getUserByName);
 
-    app.use("/users", router);
+    app.use('/users', router);
 
     return router;
 };
